@@ -1,13 +1,14 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Post
 # Create your views here.
 
 def index(request):
     index_canal = 'posts/index.html'
     text = 'Это главная страница Yatube'
+    posts = Post.objects.order_by('-pub_date')[:10]
     context = {
         'text': text,
+        'posts': posts,
     }
     return render(request, index_canal, context)
 

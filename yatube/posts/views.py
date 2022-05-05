@@ -9,11 +9,12 @@ def index(request):
     context = {
         'text': text,
     }
-    return render(request, index_canal)
+    return render(request, index_canal, context)
 
 def group_posts(request):
     template = 'posts/group_list.html'
+    group_info = 'Здесь будет информация о группах проекта Yatube'
     context = {
-        'group_info': template,
+        'group_info': group_info,
     }
-    return render(request, template)
+    return render(request, template, context)

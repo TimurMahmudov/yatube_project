@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, render
-from .models import Post, Group
+
+from .models import Group, Post
+
 # Create your views here.
 
+
 def index(request):
-    index_canal = 'posts/index.html'
     text = 'Это главная страница Yatube'
     posts = Post.objects.order_by('-pub_date')[:10]
     context = {
@@ -11,6 +13,7 @@ def index(request):
         'posts': posts,
     }
     return render(request, 'posts/index.html', context)
+
 
 def group_posts(request, slug):
     group_info = 'Здесь будет информация о группах проекта Yatube'
